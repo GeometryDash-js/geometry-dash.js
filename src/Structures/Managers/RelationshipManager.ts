@@ -1,14 +1,12 @@
 import { FormattedResponse } from "../../../types/types"
 import { Collection } from "../Collection"
-import Client from "./Client"
 import { UserListType } from "../../Utils/enums"
 import httpClient from "../../Utils/httpClient"
 import params from "../../Utils/params"
 import formatResponse from "../../Utils/formatResponse"
+import Manager from "./Manager"
 
-export default class RelationshipsManager {
-
-    public readonly client: Client
+export default class RelationshipsManager extends Manager {
 
     public blockedUsers: Collection<string, FormattedResponse> | null = null
     public friends: Collection<string, FormattedResponse> | null = null
@@ -56,9 +54,5 @@ export default class RelationshipsManager {
         return type == UserListType.Friends ? 
             this.friends : 
             this.blockedUsers
-    }
-
-    constructor(cli: Client) {
-        this.client = cli
     }
 }

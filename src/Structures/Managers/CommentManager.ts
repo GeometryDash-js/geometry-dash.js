@@ -1,13 +1,13 @@
-import Client from "./Client"
 import { postCommentOptions } from '../../../types/options'
 import GDPostError from "../Errors/GDPostError"
-import encryptor from "../../Utils/encryptor"
 import httpClient from "../../Utils/httpClient"
 import params from "../../Utils/params"
+import Manager from "./Manager"
+import Base64 from '../Encryptors/Base64'
+import XOR from '../Encryptors/XOR'
+import sha1 from 'sha1'
 
-export default class CommentManager {
-
-    public readonly client: Client
+export default class CommentManager extends Manager {
 
     /**
      * @param content The comment you want to post
@@ -25,8 +25,9 @@ export default class CommentManager {
             if(char.charCodeAt(0) > 255) throw new GDPostError('Comments can only contain ASCII characters between 0 and 255.', 'uploadGJComment21')
         }
 
-        const comment64 = encryptor.base64.encrypt(content)
-        const chk = encryptor.chk(this.client.username + comment64 + levelID + options.percent.toString(), '0xPT6iUrtws0J', 29481)
+        const comment64 = Base64.encrypt(content)
+        let chk = this.client.username + comment64 + levelID + options.percent.toString() + '0xPT6iUrtws0J'
+        chk = XOR.encrypt(sha1(chk), 29481)
 
         await httpClient.post('uploadGJComment21', {
            secret: params.secrets.common,
@@ -51,7 +52,7 @@ export default class CommentManager {
             if(char.charCodeAt(0) > 255) throw new GDPostError('Comments can only contain ASCII characters between 0 and 255.', 'uploadGJComment21')
         }
 
-        const comment64 = encryptor.base64.encrypt(content)
+        const comment64 = Base64.encrypt(content)
 
         await httpClient.post('uploadGJAccComment20', {
            secret: params.secrets.common,
@@ -60,9 +61,5 @@ export default class CommentManager {
            userName: this.client.username as string,
            comment: comment64,
         })
-    }
-
-    constructor(cli: Client) {
-        this.client = cli
     }
 }

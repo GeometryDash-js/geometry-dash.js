@@ -49,3 +49,9 @@
 - [uploadGJComment21]
 - uploadGJLevel21
 - uploadGJMessage20
+
+# Classes
+
+- Comment Class
+- Song Class
+- Player Class (not User)

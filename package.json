@@ -1,6 +1,6 @@
 {
-  "name": "geometry-dash.js-v2",
-  "version": "2.0.0",
+  "name": "geometry-dash.js",
+  "version": "2.0.2",
   "description": "Geometry Dash API Wrapper Package",
   "main": "dist/index.js",
   "scripts": {
@@ -9,10 +9,8 @@
   "author": "Aneks",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.11.5",
     "@types/sha1": "^1.1.3",
-    "axios": "^0.26.1",
-    "sha1": "^1.1.1"
+    "axios": "^0.26.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",

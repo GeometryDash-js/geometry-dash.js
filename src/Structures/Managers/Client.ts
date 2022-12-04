@@ -1,4 +1,4 @@
-import encryptor from "../../Utils/encryptor"
+import XOR from "../Encryptors/XOR"
 import httpClient from "../../Utils/httpClient"
 import params from "../../Utils/params"
 import generateUUID from "../../Utils/uuid"
@@ -34,7 +34,7 @@ export default class Client {
         this.username = username
         this.accountID = split[0]
         this.playerID = split[1]
-        this.gjp = encryptor.xor.encrypt(password, 37526)
+        this.gjp = XOR.encrypt(password, 37526)
 
         this.comments = new CommentManager(this)
 
