@@ -19,6 +19,7 @@ export class Client {
     public playerID: string | null
     public gjp: string | null
     public comments: CommentManager | null
+    public relationships: RelationshipsManager | null
     public login(username: string, password: string): Promise<Client>
 }
 

@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/sha1": "^1.1.3",
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "sha1": "^1.1.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.41.0",

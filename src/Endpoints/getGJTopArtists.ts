@@ -24,6 +24,7 @@ export default async function getTopArtists(options?: getTopArtistsOptions): Pro
     for(const artist of dataArr) {
         const formatted = formatResponse(artist, ':')
         const artistObj = new Artist(formatted)
+        
         allArtists.set(artistObj.name, artistObj)
     }
 

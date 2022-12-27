@@ -23,7 +23,7 @@
 - getGJMessages20
 - getGJRewards
 - getGJScores20
-# - getGJSongInfo - Need class
+- [getGJSongInfo]
 - [getGJTopArtists]
 # - getGJUserInfo20 - Need accountId and gjp params for Client class
 - [getGJUserList20]

@@ -1,5 +1,4 @@
 export type ErrorCode = 
-
     "-1"    | 
     "-2"    | 
     "-12"

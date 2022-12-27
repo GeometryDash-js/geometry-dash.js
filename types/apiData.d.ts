@@ -2,19 +2,14 @@ import { SocialBaseUrl, SocialLink } from "./types"
 
     // [ User ] \\
     
-export interface UserAccountData {
-    username: string
-    accountID: string
-    playerID: string
-}
 export interface UserStatData {
-    globalRank: string | null
-    stars: string
-    diamonds: string
-    coins: string
-    userCoins: string
-    demons: string
-    creatorPoints: string
+    globalRank: number | null
+    stars: number
+    diamonds: number
+    coins: number
+    userCoins: number
+    demons: number
+    creatorPoints: number
 }
 
 export interface UserSocialData {

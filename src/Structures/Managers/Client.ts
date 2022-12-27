@@ -4,9 +4,9 @@ import params from "../../Utils/params"
 import generateUUID from "../../Utils/uuid"
 import CommentManager from "./CommentManager"
 import RelationshipsManager from "./RelationshipManager"
+import { UserListType } from "../../Utils/enums"
 
 export default class Client {
-
     public username: string | null = null
     public accountID: string | null = null
     public playerID: string | null = null
@@ -18,8 +18,8 @@ export default class Client {
     /** 
         * @param username Your Geometry Dash account username
         * @param password Your Geometry Dash account password
+        * @returns Client instance
     */
-
     public async login(username: string, password: string): Promise<Client> {
 
         const data = await httpClient.post('accounts/loginGJAccount', {
@@ -30,14 +30,14 @@ export default class Client {
         })
 
         const split = data.split(',')
-
         this.username = username
         this.accountID = split[0]
         this.playerID = split[1]
         this.gjp = XOR.encrypt(password, 37526)
-
         this.comments = new CommentManager(this)
-
+        this.relationships = new RelationshipsManager(this)
+        await this.relationships.getUserList(UserListType.Blocked)
+        await this.relationships.getUserList(UserListType.Friends)
         return this
     }
 
