@@ -25,7 +25,7 @@
 - getGJScores20
 - [getGJSongInfo]
 - [getGJTopArtists]
-# - getGJUserInfo20 - Need accountId and gjp params for Client class
+# - getGJUserInfo20 - Need accountID and gjp params for Client class
 - [getGJUserList20]
 - getGJUsers20
 - getSaveData

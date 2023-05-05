@@ -9,12 +9,13 @@ import params from "../Utils/params"
 
 // TODO: check response and use all keys
 
-export default async function getUserFromID(userID: string): Promise<User> {
+export default async function getUserFromID(accountID: string): Promise<User> {
     const data = await httpClient.post('getGJUserInfo20', {
         secret: params.secrets.common,
-        targetAccountID: userID
+        targetAccountID: accountID
     })
 
     const formatted = formatResponse(data, ':')
+    console.log(formatted)
     return new User(formatted)
 }

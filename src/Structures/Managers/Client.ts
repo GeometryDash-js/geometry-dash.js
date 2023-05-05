@@ -5,6 +5,7 @@ import generateUUID from "../../Utils/uuid"
 import CommentManager from "./CommentManager"
 import RelationshipsManager from "./RelationshipManager"
 import { UserListType } from "../../Utils/enums"
+import formatResponse from "../../Utils/formatResponse"
 
 export default class Client {
     public username: string | null = null
@@ -38,7 +39,19 @@ export default class Client {
         this.relationships = new RelationshipsManager(this)
         await this.relationships.getUserList(UserListType.Blocked)
         await this.relationships.getUserList(UserListType.Friends)
+        await this.loadProfile()
         return this
     }
 
+    private async loadProfile() {
+        const data = await httpClient.post('getGJUserInfo20', {
+            secret: params.secrets.common,
+            targetAccountID: this.accountID as string,
+            accountID: this.accountID as string,
+            gjp: this.gjp as string
+        })
+    
+        const formatted = formatResponse(data, ':')
+        console.log(formatted)
+    }
 }

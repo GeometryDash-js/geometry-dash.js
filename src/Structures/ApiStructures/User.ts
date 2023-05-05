@@ -29,6 +29,8 @@ export default class User {
             twitch: data['45'] == '' ? null : data['45'] as SocialLink<SocialBaseUrl.twitch> | null,
             twitter: data['44'] == '' ? null : data['44'] as SocialLink<SocialBaseUrl.twitter> | null,
         }
+
+        // TODO: Icons
     }
 
     private static parseData(data: FormattedResponse): FormattedResponse {

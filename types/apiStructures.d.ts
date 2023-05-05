@@ -7,6 +7,7 @@ export class User {
     public readonly playerID: string
     public readonly stats: UserStatData
     public readonly social: UserSocialData
+    // TODO: Icons
     private static parseData(data: FormattedResponse): FormattedResponse
     constructor(data: FormattedResponse)
 }
@@ -33,4 +34,8 @@ export class Song {
     public readonly url: string
     // public readonly songPriority: string - Not needed
     constructor(data: FormattedResponse)
+}
+
+export class Icons {
+    // TODO
 }
